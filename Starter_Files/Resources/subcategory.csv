@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 sub-category_ids,sub-category
+=======
+subcategory_id,subcategory
+>>>>>>> 05f4085a0cbe048ea44839b81401d121ee0e2f44
 subcat1,food trucks
 subcat2,rock
 subcat3,web
