@@ -8,7 +8,6 @@ CREATE TABLE "contacts" (
     "first_name" VARCHAR(150)   NOT NULL,
     "last_name" VARCHAR(150)   NOT NULL,
     "email" VARCHAR(150)   NOT NULL,
-    "last_updated" TIMESTAMP   NOT NULL,
     CONSTRAINT "pk_contacts" PRIMARY KEY (
         "contact_id"
      )
@@ -16,8 +15,7 @@ CREATE TABLE "contacts" (
 
 CREATE TABLE "Category" (
     "category_id" VARCHAR   NOT NULL,
-    "category" VARCHAR   NOT NULL,
-    "last_updated" TIMESTAMP   NOT NULL,
+    "category_name" VARCHAR   NOT NULL,
     CONSTRAINT "pk_Category" PRIMARY KEY (
         "category_id"
      )
@@ -25,8 +23,7 @@ CREATE TABLE "Category" (
 
 CREATE TABLE "SubCategory" (
     "subcategory_id" VARCHAR   NOT NULL,
-    "subcategory" VARCHAR   NOT NULL,
-    "last_updated" TIMESTAMP   NOT NULL,
+    "subcategory_name" VARCHAR   NOT NULL,
     CONSTRAINT "pk_SubCategory" PRIMARY KEY (
         "subcategory_id"
      )
@@ -45,7 +42,6 @@ CREATE TABLE "campaign" (
     "currency" VARCHAR   NOT NULL,
     "launch_date" DATE   NOT NULL,
     "end_date" DATE   NOT NULL,
-    "last_updated" TIMESTAMP   NOT NULL,
     "category_id" VARCHAR   NOT NULL,
     "subcategory_id" VARCHAR   NOT NULL,
     CONSTRAINT "pk_campaign" PRIMARY KEY (
@@ -53,12 +49,12 @@ CREATE TABLE "campaign" (
      )
 );
 
-ALTER TABLE "contacts" ADD CONSTRAINT "fk_contacts_contact_id" FOREIGN KEY("contact_id")
-REFERENCES "campaign" ("contact_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_contact_id" FOREIGN KEY("contact_id")
+REFERENCES "contacts" ("contact_id");
 
-ALTER TABLE "Category" ADD CONSTRAINT "fk_Category_category_id" FOREIGN KEY("category_id")
-REFERENCES "campaign" ("category_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_category_id" FOREIGN KEY("category_id")
+REFERENCES "Category" ("category_id");
 
-ALTER TABLE "SubCategory" ADD CONSTRAINT "fk_SubCategory_subcategory_id" FOREIGN KEY("subcategory_id")
-REFERENCES "campaign" ("subcategory_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_subcategory_id" FOREIGN KEY("subcategory_id")
+REFERENCES "SubCategory" ("subcategory_id");
 
