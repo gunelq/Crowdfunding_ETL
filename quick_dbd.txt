@@ -1,0 +1,43 @@
+
+Campaign_ETL
+
+
+
+contacts
+-
+contact_id INTEGER PK
+first_name VARCHAR(150)
+last_name VARCHAR(150)
+email VARCHAR(150)
+
+
+
+Category
+-
+category_id VARCHAR PK
+category_name VARCHAR
+
+
+SubCategory
+- 
+subcategory_id VARCHAR PK
+subcategory_name VARCHAR
+
+
+campaign
+-
+cf_id INTEGER PK
+contact_id INTEGER FK >- contacts.contact_id
+company_name VARCHAR
+description VARCHAR
+goal FLOAT
+pledged FLOAT
+outcome VARCHAR(50)
+backers_count INTEGER
+country VARCHAR
+currency VARCHAR
+launch_date DATE
+end_date DATE
+category_id VARCHAR FK >- Category.category_id
+subcategory_id VARCHAR FK >- SubCategory.subcategory_id
+
